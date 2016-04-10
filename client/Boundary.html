@@ -1,0 +1,23 @@
+<template name="Boundary">
+  {{#if ready}}
+    {{#if more}}
+      <button type="button" class="loadmore">Load More</button>
+    {{/if}}
+  {{/if}}
+  {{> BoundarySpinner context=context }}
+</template>
+
+<template name="BoundaryUpToDate">
+  {{#if new}}
+    <button type="button" class="loadmore">Load New</button>
+  {{/if}}
+</template>
+
+<template name="BoundarySpinner">
+  <div class="loaderWrap">
+    {{#unless ready}}
+      <div class="loader">Loading...</div>
+    {{/unless}}
+  </div>
+</template>
+

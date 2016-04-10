@@ -1,0 +1,42 @@
+.loader {
+  margin: 0px auto;
+  font-size: 10px;
+  position: relative;
+  top: 2rem;
+  text-indent: -9999em;
+  border-top: 0.2em solid rgba(200, 200, 200, 0.2);
+  border-right: 0.2em solid rgba(200, 200, 200, 0.2);
+  border-bottom: 0.2em solid rgba(200, 200, 200, 0.2);
+  border-left: 0.2em solid #0CB2DC;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 6em;
+  height: 6em;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
