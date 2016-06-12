@@ -1,12 +1,20 @@
 <template name="Boundary">
-  {{#if ready}}
-    {{#if more}}
-      <button type="button" class="loadmore">Load More</button>
+  <div class="boundary-wrap">
+    <div class="boundary-loader-wrap">
+      {{> BoundarySpinner context=context loader=loader }}
+    </div>
+
+    {{#if ready}}
+      {{#if more}}
+        <button type="button" class="loadmore">
+            {{ buttonText }}
+        </button>
+      {{/if}}
     {{/if}}
-  {{/if}}
-  {{> BoundarySpinner context=context }}
+  </div>
 </template>
 
+<!-- TODO: add time limit function -->
 <template name="BoundaryUpToDate">
   {{#if new}}
     <button type="button" class="loadmore">Load New</button>
@@ -14,9 +22,13 @@
 </template>
 
 <template name="BoundarySpinner">
-  <div class="loaderWrap">
+  <div class="boundary-loader-wrap">
     {{#unless ready}}
-      <div class="loader">Loading...</div>
+      {{#if loader}}
+        {{> Template.dynamic template=loader }}
+      {{else}}
+        <div class="loader">Loading...</div>
+      {{/if}}
     {{/unless}}
   </div>
 </template>

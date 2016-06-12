@@ -11,22 +11,25 @@ Template.Boundary.helpers({
   },
   ready: function() {
     return Boundary.ready.get(this.context);
-  }
+  },
+  buttonText: function() {
+    return this.buttonText || 'load more';
+  },
 });
 
 Template.Boundary.events({
   'click button': function(event, template) {
-    Boundary.loadMore({context: this.context});
+    Boundary.loadMore({ context: this.context });
   }
 });
 
 Template.Boundary.onDestroyed(function() {
   /* CleanUp and Reset When this template is destroyed */
-    Boundary.reset({context: this.data.context});
+  Boundary.reset({ context: this.data.context });
 });
 
 Template.BoundarySpinner.onRendered(function() {
-  this.find('.loaderWrap')._uihooks = {
+  this.find('.boundary-loader-wrap')._uihooks = {
     insertElement: function (node, next) {
       $(node)
         .hide()

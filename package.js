@@ -1,9 +1,9 @@
 /* eslint-disable */
 Package.describe({
   name: 'pushplaybang:boundary',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'flexible isomorphic pagination package for meteor',
-  git: '',
+  git: 'https://github.com/Pushplaybang/boundary',
   documentation: 'README.md'
 });
 

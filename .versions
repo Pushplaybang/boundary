@@ -24,7 +24,7 @@ modules-runtime@0.6.3
 mongo-id@1.0.4
 observe-sequence@1.0.11
 promise@0.6.7
-pushplaybang:boundary@0.0.1
+pushplaybang:boundary@0.0.2
 random@1.0.9
 reactive-dict@1.1.7
 reactive-var@1.0.9
