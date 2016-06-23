@@ -11,6 +11,7 @@
         </button>
       {{/if}}
     {{/if}}
+
   </div>
 </template>
 
@@ -27,7 +28,7 @@
       {{#if loader}}
         {{> Template.dynamic template=loader }}
       {{else}}
-        <div class="loader">Loading...</div>
+        <div class="boundary-loader">Loading...</div>
       {{/if}}
     {{/unless}}
   </div>
