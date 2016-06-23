@@ -5,11 +5,24 @@ Template.Boundary.onCreated(function() {
   Boundary.viewCount.set(context, -1);
 });
 
+Template.Boundary.onRendered(function() {
+  this.find('.boundary-wrap')._uihooks = {
+    insertElement: function (node, next) {
+      $(node)
+        .hide()
+        .delay(200)
+        .insertBefore(next)
+        .fadeIn(325);
+    }
+  };
+});
+
 Template.Boundary.helpers({
   more: function() {
     return Boundary.subsCount.get(this.context) > Boundary.pageCount.get(this.context);
   },
   ready: function() {
+    console.log("Boundary.ready.get(this.context)", Boundary.ready.get(this.context));
     return Boundary.ready.get(this.context);
   },
   buttonText: function() {
@@ -35,13 +48,6 @@ Template.BoundarySpinner.onRendered(function() {
         .hide()
         .insertBefore(next)
         .fadeIn(200);
-    },
-    removeElement: function(node) {
-      $(node).delay(800).animate({
-        opacity: 0
-      }, 200, function() {
-        $(this).remove();
-      });
     }
   };
 });
