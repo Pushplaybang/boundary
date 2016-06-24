@@ -3,8 +3,6 @@ flexible isomorphic pagination package for meteor
 
 Boundary is a very simple and easy to implement infinite scroll pagination package for meteor.
 
-#**NB: NOT PUBLISHED YET**
-
 ## Install
 Simple install the package via atmosphere
 
@@ -17,7 +15,7 @@ meteor add pushplaybang:boundary
 ## Example Usage
 To setup Pagination you must setup Boundary on the client side, and on the server, this is very simple to do in your publication and subscription, Boundary specifically does not replace the standard pub / sub in Meteor but provides the functionality required to set up the pagination quickly and easily.
 
-#### On the client : 
+#### On the client :
 The first place we need to setup Boundary is in your template onCreated where you're setting up your subscription, (if you're setting up your subscription somewhere else you can setup Boundary there as neccessary).
 
 ```js
@@ -38,7 +36,7 @@ Template.topicList.onCreated(function() {
   self.autorun(function() {
 
     /*
-      Setup Boundary with a context 
+      Setup Boundary with a context
       NB the context namespaces the pagination values
      */
     var limit = Boundary.pageCount.get('blog');
@@ -59,6 +57,7 @@ Template.topicList.onCreated(function() {
       selector: {},
       increment: 5,
       template: self
+      subscription: self.sub
     });
   });
 
@@ -106,7 +105,7 @@ lastly add the Boundary template helpers into your listing template.
 
 **nb :** note that the ready helper is set automatically by Boundary.
 
-#### On the Server : 
+#### On the Server :
 On the server you will need to do very little, simply wrap the limit with the provided function.
 
 ```js
@@ -120,6 +119,13 @@ Meteor.publish('posts.index', function(limit) {
 if apropriate, and possible in your use case, it would be wise to make your query selectors accessible from a common referenceable object, as to avoid writing it out three times.
 
 
+## Loader Template
+The boundary package includes a simple CSS 3 loader, but if you've got a custom loader in your app that you'd like to use, you can by passing a tempalte name to the loader property on the boundary template.
+
+```html
+{{> Boundary context='blog' loader='customAppLoader' }}
+```
+
 
 ## How it Works
 Unlike the general pattern for infinite scroll pagination in meteor where the count of the entire collection is published, Boundary works by always asking for one more record than is needed.  In this way, the client always knows if there are older records available, and uses this information to display a load more button.
@@ -132,7 +138,7 @@ Boundary.loadMore(context);
 ```
 
 ### Resetting
-Boundary automatically resets the values for the current context when the template its included in is destroyed.  If you're using Boundary in a template controller pattern, you may want to reset the current context programatically, use the reset method to achieve this: 
+Boundary automatically resets the values for the current context when the template its included in is destroyed.  If you're using Boundary in a template controller pattern, you may want to reset the current context programatically, use the reset method to achieve this:
 
 ```js
 Boundary.reset(context);
@@ -146,6 +152,14 @@ Essentially a core part of how Boundary works is by managing three counts :
 * viewCount - tracks the number of items that are displayed, this is only updated once the data is ready allowing us to avoid any page flashes.
 
 Each is a reactive dictionary saving the count against the context provided. The Boundary template interacts with these, but should you need to interact with them directly you can use the standard get and set methods ie: `Boundary.viewCount.get(context)`.
+
+
+## ChangeLog
+* 0.0.5 - improved animation in of the loader template and loadmore button
+* 0.0.4 - explicitly set the subscription in the `.create` method
+* 0.0.3 - added default positioning CSS for the loader, updated the readme
+* 0.0.2 - added custom loader ability, and better html structure to the buttom and loader
+
 
 ## TODO
 * Improve API, and add an easy to use interface above the current API
