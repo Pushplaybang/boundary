@@ -22,7 +22,6 @@ Template.Boundary.helpers({
     return Boundary.subsCount.get(this.context) > Boundary.pageCount.get(this.context);
   },
   ready: function() {
-    console.log("Boundary.ready.get(this.context)", Boundary.ready.get(this.context));
     return Boundary.ready.get(this.context);
   },
   buttonText: function() {
