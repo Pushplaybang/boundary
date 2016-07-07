@@ -155,6 +155,7 @@ Each is a reactive dictionary saving the count against the context provided. The
 
 
 ## ChangeLog
+* 0.0.6 - Gaurd against no data  context set on template
 * 0.0.5 - improved animation in of the loader template and loadmore button
 * 0.0.4 - explicitly set the subscription in the `.create` method
 * 0.0.3 - added default positioning CSS for the loader, updated the readme
